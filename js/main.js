@@ -75,6 +75,7 @@ $(function(){
             settings: {
               slidesToShow: 2,
               centerMode: true,
+              variableWidth: true,
             }
           },
           {
@@ -82,6 +83,7 @@ $(function(){
             settings: {
               slidesToShow: 1,
               centerMode: true,
+              variableWidth: true,
             }
           },
         ]
