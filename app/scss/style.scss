@@ -1,0 +1,749 @@
+@import "vars";
+@import "libs";
+@import "fonts";
+@import "global";
+
+/*-------------------------------------------------------------HEADER---------------------------------------------------------*/
+.header{
+    position: relative;
+    height: 100vh;
+}
+//----------------------------слайдер header на весь экран-------------
+.header__slider{
+    &-item{
+        height: 100vh;
+        background-image: url(../img/header-bg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative; // позиционирование для slider-item__info
+    }
+}
+//правый нижний контент слайдера
+.slider-item__info{ // правый-нижний контент
+    position: absolute; // перемещаем наш контент экрана в правый нижний угол
+    right: 80px;
+    bottom: 116px;
+    text-align: right;
+}
+.slider-item__info-suptitle{
+    margin-bottom: 5px;
+}
+.slider-item__info-suptext{
+    margin-bottom: 8px;
+}
+.slider-item__info-title{
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 86px;
+    margin-bottom: 48px;
+}
+.slider-item__info-text{
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 20px;
+}
+//блок навигации слайдера (верхние правые стрелки)
+.slider-arrows{
+    position: absolute;
+    top: 40px;
+    right: 80px;
+    cursor: pointer;
+    z-index: 4;
+}
+.slider-arrows__left{
+    right: 125px
+}
+
+//---------------------------------------------------нижний слайдер header-------------------------------------
+.slider-dotshead{ // сам слайдер
+    position: absolute;
+    right: 30px;
+    bottom: 36px;
+    max-width: 920px;
+    width: 100%;
+    .slick-current{ // когда стоит активный экран
+        .dots-box{ // меняем цвет полоски
+            border-top: 4px solid $green;
+        }
+    }
+}
+.dots-box{ // элемент
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    height: 28px;
+    align-items: center;
+    border-top: 4px solid #fff;
+    padding-top: 6px;
+    &__number{
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: 800;
+    }
+    &__name{
+        font-weight: 300;
+        line-height: 19px;
+        text-transform: capitalize;
+    }
+}
+//---------------------------------------------------aside-------------------------------------
+.header__aside{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    border-right: 1px solid rgba(#fff, .25);
+    height: 100vh;
+    text-align: center;
+}
+.logo img{
+    width: 120px;
+}
+.header__title{ // полурозрачная надпись
+    font-weight: 800;
+    line-height: 156px;
+    font-size: 200px;
+    max-width: 467px;
+    opacity: 0.07;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+//-----------------------------------------menu
+.menu{
+    padding-top: 15px;
+    span{
+        display: block;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 3px;
+        font-weight: 500;
+        padding-top: 6px;
+        margin-bottom: 10px;
+        text-transform: capitalize;
+    }
+}
+.menu-btn{
+    width: 60px;
+    height: 60px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    position: absolute;
+    right: 20px;
+    z-index: 20;
+    top: 75px;
+    background-color: rgba(#fff, 0.1);
+    &__inner{
+        width: 40px;
+    }
+    &__line{
+        height: 5px;
+        background-color: $green;
+        + .menu-btn__line{ // идет обращение ко всем элементам кроме первого
+            margin-top: 5px;
+        }
+    }
+}
+
+.header__date{ // дата (слева снизу)
+    font-size: 61px;
+    line-height: 64px;
+    font-weight: 800;
+    span{
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        letter-spacing: 1.4px;
+        margin-bottom: 6px; 
+        display: block;
+    }
+}
+.header__search{ // иконка поиска
+    padding-top: 15px;
+    padding-bottom: 17px;
+}
+.header__location{ // местонахождение(левый нижний угол)
+    display: inline-block;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 1.05px;
+    font-weight: 300;
+    position: relative;
+    padding-left: 19px;
+    text-transform: capitalize;
+    &::before{
+        content: "";
+        position: absolute;
+        width: 11px;
+        height: 13px;
+        background-image: url(../img/marker.svg);
+        left: 0;
+        top: 0;
+    }
+}
+.header__map{ // карта трассы
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+}
+.header__arrows{ // стрелка вниз
+    position: absolute;
+    left: 210px;
+    bottom: 30px;
+    z-index: 3;
+}
+.line-animation{ // белая линия (трасса)
+    stroke-dashoffset: 600;
+    stroke-dasharray: 600;
+    animation: animdash 5s infinite 6s;
+}
+@keyframes animdash{ // анимация для этой линии
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+
+/*--------------------------------------------------------Секция surf---------------------------------------------------------------*/
+.surf{
+    background-image: url(../img/surf-bg.png);
+    background-position: right 200px;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+.surf__subtitle{
+    text-align: right;
+    padding-right: 80px;
+    margin-top: -86px;
+}
+
+/*--------------------------------------------------Нижний слайдер в секции surf*/
+.surf-slider{
+    padding-top: 110px;
+    .slider-arrows{
+        top: 50px;
+        opacity: 0.25;
+    }
+    .slick-slide:nth-child(4n + 1){ // меняем уровни боксов 
+        .surf-box{
+            margin-top: 32px;
+        }
+    }
+    .slick-slide:nth-child(4n + 3){ // меняем уровни боксов 
+        .surf-box{
+            margin-top: 89px;
+        }
+    }
+    .slick-current{ // если элемент слайдера активен
+        .surf-box__inner-btn{ // появляется кнопка
+            display: block;
+        }
+        .surf-box__inner{ // фон светлеет
+            background: rgba(#1c2121, .3);
+        }
+    }
+}
+.surf-box{ // стили для элемента слайдера
+    &__wrapper{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    &__inner{
+        min-height: 750px;
+        background: rgba(#1c2121, 0.85);
+        position: relative;
+        transition: all .5s;
+        &:hover{ // при наведении на элемент слайдера фон светлеет и появляется кнопка
+            background: rgba(#1c2121, .3);
+            .surf-box__inner-btn{
+                display: block;
+            }
+        }
+    }
+}
+.surf-box__inner-title{
+    line-height: 36px;
+    font-size: 40px;
+    font-weight: 800;
+    padding: 72px 0px 0px 40px;
+    width: 140px;
+}
+.surf-box__inner-location{
+    line-height: 22px;
+    font-size: 18px;
+    letter-spacing: 8px;
+    transform: rotate(-90deg);
+    position: absolute;
+    left: 40px;
+    bottom: 80px;
+    width: 0px;
+    height: 0px;
+    white-space: nowrap;
+    span{
+        font-weight: 100;
+    }
+}
+.surf-box__inner-btn{
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+/*----------------------------------------------------------Слайдер Map*/
+.slider-map{
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 635px;
+    background-image: url(../img/world-map-dots.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    .slick-list{
+        min-height: 635px;
+        overflow: visible;
+    }
+    .slick-current{
+        .slider-dots__content{
+            display: block;
+            width: 285px;
+            padding: 28px 31px 0px 32px;
+        }
+    }
+}
+.slider-dots__content-row{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+.slider-dots__content-item{
+    text-align: center;
+    img{
+        margin-bottom: 7px;
+    }
+}
+.slider-dots__content-number{
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 23px;
+}
+.slider-dots__content-name{
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 12px;
+}
+.slider-dots__content-title{
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 26px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        background-color: $green;
+        width: 80px;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+    }
+}
+.slider-dots__content-subtitle{
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: capitalize;
+}
+.slider-dots__content-link{
+    padding-top: 4px;
+}
+.slider-dots__circle{
+    width: 23px;
+    height: 23px;
+    background-color: $green;
+    border-radius: 50%;
+    box-shadow: 0px 0px 35px rgba(74, 246, 205, 0.837777);
+}
+.slider-dots{
+    position: relative;
+}
+.slider-dots--1{
+    top: 335px;
+    left: 0;
+    .slider-dots__content{
+        transform: translateX(0);
+        &::before{
+            left: -0.5px;
+        }
+    }
+}
+.slider-dots--2{
+    top: 270px;
+    left: 0;
+    .slider-dots__circle{
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            background-image: url(../img/mini-marker.png);
+            width: 14px;
+            height: 17px;
+            background-size: cover;
+            right: -15px;
+            top: -25px;
+        }
+    }
+}
+.slider-dots--3{
+    top: 330px;
+    left: 25px;
+}
+.slider-dots--4{
+    top: 470px;
+    left: -25px;
+}
+.slider-dots--5{
+    top: 230px;
+    left: -65px;
+}
+.slider-dots--6{
+    top: 550px;
+    left: -120px;
+}
+.slider-dots--7{
+    top: 375px;
+    left: -95px;
+}
+.slider-dots--8{
+    top: 470px;
+    left: 35px;
+    .slider-dots__content{
+        transform: translateX(-262px);
+        &::before{
+            left: auto;
+            right: -0.5px;
+        }
+    }
+}
+.slider-dots__content{
+    display: none;
+    padding: 28px 31px px 32px;
+    background:rgba(#0F1010, .7);
+    border-radius: 6px;
+    position: absolute;
+    bottom: 35px;
+    transform: translateX(-50%);
+    z-index: 1;
+    &::before{
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-bottom: 20px solid $green;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        bottom: -21px;
+        left: calc(50% - 1px);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+/*-------------------------------------------------------------Секция holder-------------------------------------------------*/
+
+.holder{ // стили для всей секции
+    background-image: url(../img/travel-bg.png);
+    &.sleep{
+        background-image: url(../img/frangipani.png);
+    }
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    .slider-arrows{
+        top: 225px;
+        opacity: .5;
+    }
+
+}
+.holder-slider{
+    &__head{
+        background-repeat: no-repeat;
+        background-position: top left;
+        min-height: 780px;
+    }
+    &__subtitle{ // правая надпись над самолетом
+        text-align: right;
+        padding: 132px 80px 0px 0px;
+    }
+    &__descr{ // часть, где надпись, а справа самолет
+        padding: 160px 0px 0px 132px;
+        min-height: 320px;
+        margin-top: -230px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: contain;
+        .descr__head{
+            position: relative;
+            padding-right: 68px;
+            &.descr__head-sleep{
+                padding-right: 215px;
+            }
+            img{
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .holder__star-list{
+                position: absolute;
+                top: 0;
+                right: 0;
+                img{
+                    position: static;
+                }
+            }
+        }
+    }
+    &__btn{ // кнопка стандартная
+        text-align: center;
+    }
+}
+.holder-slider__info{ // родитель для информативного контейнера
+    display: flex;
+    justify-content: space-around;
+}
+.holder-slider__info-item{ // родитель для айтема
+    min-height: 200px;
+    margin-bottom: 66px;
+    position: relative;
+}
+.holder-slider__info-subtitle{ // перевернутая надпись
+    position: absolute;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 8px;
+    opacity: 0.5;
+    transform: rotate(-90deg);
+    text-align: right;
+    white-space: nowrap;
+    top: 97px;
+    left: -97px;
+    width: 200px;
+    height: 0px;
+    
+}
+.holder-slider__info-title{ 
+    font-size: 40px;
+    line-height: 36px;
+    font-weight: 800;
+    padding-left: 40px;
+    position: relative;
+    .holder-pricing__span{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 0;
+        text-align: right;
+        letter-spacing: 5.25px;
+        opacity: 0.75;
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+    }
+}
+
+/*--------------------------------------------------------------Секиця SHOP--------------------------------------------------*/
+.shop{
+    background-image: url(../img/shop-bg.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    .slider-arrows{
+        opacity: .25;
+    }
+}
+.shop__slider{
+    padding: 60px 0 0 132px;
+}
+.shop__slider-inner{
+    display: flex;
+}
+.shop__slider-info{
+    max-width: 480px;
+    width: 100%;
+    margin-right: 40px;
+    padding-top: 150px;
+}
+.descr__head-shop{
+    max-width: 340px;
+    margin-bottom: 47px;
+}
+.shop__star-list{
+    margin-left: -9px;
+}
+.shop__slider-price{
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 64px;
+    sup{
+        font-size: 18px;
+        padding-left: 2px;
+    }
+}
+
+.shop__slider-content{
+    padding-left: 170px;
+    display: flex;
+    align-items: flex-end;
+}
+.shop__extras{
+    padding-left: 150px;
+}
+.shop__extras-title{
+    margin-bottom: 25px;
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: 800;
+}
+.shop__extras-inner{
+    display: flex;
+}
+.shop__extras-box{
+    text-align: center;
+    margin-right: 57px;
+}
+.shop__extras-images{
+    min-height: 105px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+}
+.shop__extras-name{
+    font-size: 18px;
+    line-height: 22px;
+    opacity: 0.5;
+    letter-spacing: 8px;
+    margin-bottom: 16px;
+}
+.shop__extras-price{
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 40px;
+}
+
+
+
+.surfboard{
+    position: relative;
+}
+.surfboard-box{
+    position: absolute;
+}
+.surfboard__posittion--1{
+    right: 40px;
+    top: 215px;
+}
+.surfboard__posittion--2{
+    left: -6px;
+    top: 313px;
+}
+.surfboard__posittion--3{
+    left: 52px;
+    bottom: 70px;
+    .surfboard-box__content{
+        padding-left: 0;
+        padding-right: 104px;
+        top: -15px;
+        left: -400px;
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: auto;
+            width: 80px;
+            height: 1px;
+            background-color: #fff;
+        }
+    }
+}
+.surfboard-box__circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #fff;
+    cursor: pointer;
+
+    &.active{
+        .circle-row{
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+    }
+}
+.circle-row{ // сделал + 
+    background-color: $green;
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    & + .circle-row{
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+}
+.surfboard-box__circle.active + .surfboard-box__content{ // если встречаются два элемента(circle и active, то у соседнего элемента display block)
+    display: block;
+}
+.surfboard-box__content{
+    display: none;
+    position: absolute;
+    top: -15px;
+    left: 40px;
+    width: 359px;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 24px;
+    padding-left: 104px;
+    &::before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 80px;
+        height: 1px;
+        background-color: #fff;
+    }
+}
+
+
+
+.footer{
+    text-align: center;
+    padding: 285px 0 34px;
+    .btn{
+        span{
+            padding: 17px 17px 15px;
+            &::after{
+                display: none;
+            }
+        }
+    }
+    &__copy{
+        font-weight: 300;
+        padding-top: 27px;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 1.05px;
+        opacity: 0.5;
+    }
+}
+@import "media";
